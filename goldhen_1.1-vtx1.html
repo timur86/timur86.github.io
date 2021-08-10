@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>GoldHEN 1.1 VTX1</title>
+</head>
+
+<style>
+body{color: white;}
+</style>
+
+<body onload="go()">
+
+<script>
+if(document.cookie.indexOf('kex=0') >= 0)
+    window.location.href ='goldhen_1.1-vtx1.html';
+</script>
+
+<script>
+function print(){}
+
+var scriptCode = '';
+
+function preloadScripts(lst)
+{
+    for(var i = 0; i < lst.length; i++)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', lst[i], false);
+        xhr.send('');
+        scriptCode += xhr.responseText + '\n';
+    }
+}
+
+function done()
+{
+    if(main_ret == 0 || main_ret == 179)
+    {
+        alert("GoldHEN 1.1 activated successfully!");
+        read_ptr_at(0);
+    }
+    else
+        alert("Jailbreak failed, reboot PS4.");
+}
+
+window.midExploit = function()
+{
+    preloadScripts(['jb/blob.js', 'jb-vtx1/jb-vtx.js', 'goldhen/goldhen_1.1_755.js', 'jb-vtx1/loader-vtx.js'], go);
+}
+
+window.postExploit = function()
+{
+    document.cookie = 'kex=0';
+    setTimeout(function()
+    {
+        eval.call(window, scriptCode);
+        done();
+    }, 100);
+};
+</script>
+
+<script src="webkit-7.5x/utils.js"></script>
+<script src="webkit-7.5x/int64.js"></script>
+<script src="webkit-7.5x/ps4.js"></script>
+
+<button id="input1" onfocus="handle2()"></button>
+<button id="input2"></button>
+<button id="input3" onfocus="handle2()"></button>
+
+<select id="select1">
+<option value="value1">Value1</option>
+</select>
+
+</body>
+</html>
